@@ -8,13 +8,37 @@ export type StorageDocument = Storage & Document;
 @Schema()
 export class Storage {
   @Prop()
+  id: string;
+
+  @Prop()
+  type: string;
+
+  @Prop()
+  code: string;
+
+  @Prop()
   name: string;
 
   @Prop()
   urlName: string;
 
   @Prop()
-  code: string;
+  phoneNumber: string;
+
+  @Prop()
+  email: string;
+
+  @Prop()
+  socialMedia: string;
+
+  @Prop()
+  address: string;
+
+  @Prop()
+  city: string;
+
+  @Prop()
+  additionalInfo: string;
 }
 
 export const StorageSchema = SchemaFactory.createForClass(Storage);

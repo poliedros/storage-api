@@ -7,7 +7,7 @@ export class CreateStorageDto {
     type: string;
     phoneNumber: string;
     email: string;
-    //socialMedias: string[];
+    //socialMedia: string[];
     socialMedia: string;
     additionalInfo: string;
     //addresses: string[];
