@@ -8,10 +8,31 @@ export type ItemDocument = Item & Document;
 @Schema()
 export class Item {
   @Prop()
+  id: string;
+
+  @Prop()
   name: string;
 
   @Prop()
   code: string;
+
+  @Prop()
+  description: string;
+
+  @Prop()
+  type: string;
+
+  @Prop()
+  price: number;
+
+  @Prop()
+  quantity: number;
+
+  @Prop()
+  image: string;
+
+  @Prop()
+  clientId: string;
 }
 
 export const ItemSchema = SchemaFactory.createForClass(Item);
