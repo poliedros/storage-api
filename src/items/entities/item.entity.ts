@@ -23,6 +23,9 @@ export class Item {
   type: string;
 
   @Prop()
+  subType: string;
+
+  @Prop()
   price: number;
 
   @Prop()

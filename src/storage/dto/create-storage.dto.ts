@@ -4,6 +4,7 @@ export class CreateStorageDto {
     id: string;
     name: string;
     urlName: string;
+    logoImage: string;
     type: string;
     phoneNumber: string;
     email: string;
@@ -15,4 +16,7 @@ export class CreateStorageDto {
     city: string;
     code: string;
     //items: Item[];
+    theme: string;
+    deliveryPrice: string;
+    paymentMethods: string;
 }

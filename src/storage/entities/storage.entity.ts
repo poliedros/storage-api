@@ -23,6 +23,9 @@ export class Storage {
   urlName: string;
 
   @Prop()
+  logoImage: string;
+
+  @Prop()
   phoneNumber: string;
 
   @Prop()
@@ -39,6 +42,15 @@ export class Storage {
 
   @Prop()
   additionalInfo: string;
+
+  @Prop()
+  theme: string;
+
+  @Prop()
+  deliveryPrice: string;
+
+  @Prop()
+  paymentMethods: string;
 }
 
 export const StorageSchema = SchemaFactory.createForClass(Storage);
