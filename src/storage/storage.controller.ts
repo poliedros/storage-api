@@ -2,14 +2,14 @@ import { Controller, Body, Param } from '@nestjs/common';
 import { StorageService } from './storage.service';
 import { CreateStorageDto } from './dto/create-storage.dto';
 import { UpdateStorageDto } from './dto/update-storage.dto';
-import { EventPattern, MessagePattern } from '@nestjs/microservices';
+import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices';
 
-@Controller('storage')
+@Controller()
 export class StorageController {
   constructor(private readonly storageService: StorageService) {}
 
   @EventPattern({ storage: 'create' })
-  create(@Body() createStorageDto: CreateStorageDto) {
+  create(@Payload() createStorageDto: CreateStorageDto) {
     return this.storageService.create(createStorageDto);
   }
 
@@ -19,17 +19,18 @@ export class StorageController {
   }
 
   @MessagePattern({ storage: 'find' })
-  findOne(@Param('id') id: string) {
+  findOne(@Payload() id: string) {
     return this.storageService.findOne(id);
   }
 
   @EventPattern({ storage: 'patch' })
-  update(@Param('id') id: string, @Body() updateStorageDto: UpdateStorageDto) {
-    return this.storageService.update(id, updateStorageDto);
+  update(@Payload() updateStorageDto: UpdateStorageDto) {
+    const { _id } = updateStorageDto;
+    return this.storageService.update(_id, updateStorageDto);
   }
 
   @EventPattern({ storage: 'delete' })
-  remove(@Param('id') id: string) {
+  remove(@Payload() id: string) {
     return this.storageService.remove(id);
   }
 }
