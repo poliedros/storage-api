@@ -6,8 +6,18 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ItemsModule } from './items/items.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb+srv://amendes:EoyOR1Wxi9penzYH@cluster0.59uij.mongodb.net/test'), StorageModule, ItemsModule],
-  controllers: [/* AppController */],
-  providers: [/* AppService */],
+  imports: [
+    MongooseModule.forRoot(
+      'mongodb+srv://amendes:EoyOR1Wxi9penzYH@cluster0.59uij.mongodb.net/test',
+    ),
+    StorageModule,
+    ItemsModule,
+  ],
+  controllers: [
+    /* AppController */
+  ],
+  providers: [
+    /* AppService */
+  ],
 })
 export class AppModule {}

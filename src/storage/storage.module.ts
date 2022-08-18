@@ -5,8 +5,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Storage, StorageSchema } from './entities/storage.entity';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Storage.name, schema: StorageSchema }])],
+  imports: [
+    MongooseModule.forFeature([{ name: Storage.name, schema: StorageSchema }]),
+  ],
   controllers: [StorageController],
-  providers: [StorageService]
+  providers: [StorageService],
 })
 export class StorageModule {}

@@ -7,8 +7,9 @@ import { Item, ItemDocument } from './entities/item.entity';
 
 @Injectable()
 export class ItemsService {
-
-  constructor(@InjectModel(Item.name) private itemsModel: Model<ItemDocument>) {}
+  constructor(
+    @InjectModel(Item.name) private itemsModel: Model<ItemDocument>,
+  ) {}
 
   create(createItemDto: CreateItemDto) {
     const items = new this.itemsModel(createItemDto);
@@ -24,19 +25,24 @@ export class ItemsService {
   }
 
   update(id: string, updateItemDto: UpdateItemDto) {
-    return this.itemsModel.findByIdAndUpdate({
-      _id: id
-    }, {
-      $set: updateItemDto,
-    }, {
-      new: true,
-    },
+    return this.itemsModel.findByIdAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        $set: updateItemDto,
+      },
+      {
+        new: true,
+      },
     );
   }
 
   remove(id: string) {
-    return this.itemsModel.deleteOne({
-      _id: id,
-    }).exec();
+    return this.itemsModel
+      .deleteOne({
+        _id: id,
+      })
+      .exec();
   }
 }

@@ -5,8 +5,10 @@ import { ItemsController } from './items.controller';
 import { Item, ItemSchema } from './entities/item.entity';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Item.name, schema: ItemSchema }])],
+  imports: [
+    MongooseModule.forFeature([{ name: Item.name, schema: ItemSchema }]),
+  ],
   controllers: [ItemsController],
-  providers: [ItemsService]
+  providers: [ItemsService],
 })
 export class ItemsModule {}

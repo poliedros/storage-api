@@ -7,8 +7,9 @@ import { Storage, StorageDocument } from './entities/storage.entity';
 
 @Injectable()
 export class StorageService {
-
-  constructor(@InjectModel(Storage.name) private storageModel: Model<StorageDocument>) {}
+  constructor(
+    @InjectModel(Storage.name) private storageModel: Model<StorageDocument>,
+  ) {}
 
   create(createStorageDto: CreateStorageDto) {
     const storage = new this.storageModel(createStorageDto);
@@ -24,19 +25,24 @@ export class StorageService {
   }
 
   update(id: string, updateStorageDto: UpdateStorageDto) {
-    return this.storageModel.findByIdAndUpdate({
-      _id: id
-    }, {
-      $set: updateStorageDto,
-    }, {
-      new: true,
-    },
+    return this.storageModel.findByIdAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        $set: updateStorageDto,
+      },
+      {
+        new: true,
+      },
     );
   }
 
   remove(id: string) {
-    return this.storageModel.deleteOne({
-      _id: id,
-    }).exec();
+    return this.storageModel
+      .deleteOne({
+        _id: id,
+      })
+      .exec();
   }
 }
