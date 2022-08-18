@@ -1,5 +1,5 @@
-import { Controller, Body, Patch, Param, Delete } from '@nestjs/common';
-import { EventPattern, MessagePattern } from '@nestjs/microservices';
+import { Controller, Body } from '@nestjs/common';
+import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices';
 import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
@@ -10,6 +10,7 @@ export class ItemsController {
 
   @EventPattern({ items: 'create' })
   create(@Body() createItemDto: CreateItemDto) {
+    console.log(createItemDto);
     return this.itemsService.create(createItemDto);
   }
 
@@ -19,17 +20,18 @@ export class ItemsController {
   }
 
   @MessagePattern({ items: 'find' })
-  findOne(@Param('id') id: string) {
+  findOne(@Payload('id') id: string) {
     return this.itemsService.findOne(id);
   }
 
   @EventPattern({ items: 'patch' })
-  update(@Param('id') id: string, @Body() updateItemDto: UpdateItemDto) {
-    return this.itemsService.update(id, updateItemDto);
+  update(@Payload() updateItemDto: UpdateItemDto) {
+    const { _id } = updateItemDto;
+    return this.itemsService.update(_id, updateItemDto);
   }
 
   @EventPattern({ items: 'remove' })
-  remove(@Param('id') id: string) {
+  remove(@Payload() id: string) {
     return this.itemsService.remove(id);
   }
 }

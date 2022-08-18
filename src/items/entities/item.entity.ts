@@ -8,9 +8,6 @@ export type ItemDocument = Item & Document;
 @Schema()
 export class Item {
   @Prop()
-  id: string;
-
-  @Prop()
   name: string;
 
   @Prop()

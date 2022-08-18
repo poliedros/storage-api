@@ -1,5 +1,4 @@
 export class CreateItemDto {
-  id: string;
   name: string;
   code: string;
   description: string;

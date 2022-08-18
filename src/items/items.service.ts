@@ -12,8 +12,8 @@ export class ItemsService {
   ) {}
 
   create(createItemDto: CreateItemDto) {
-    const items = new this.itemsModel(createItemDto);
-    return items.save();
+    const item = new this.itemsModel(createItemDto);
+    return item.save();
   }
 
   findAll() {
