@@ -1,4 +1,4 @@
-import { Controller, Body } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices';
 import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
@@ -9,8 +9,7 @@ export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
   @EventPattern({ items: 'create' })
-  create(@Body() createItemDto: CreateItemDto) {
-    console.log(createItemDto);
+  create(@Payload() createItemDto: CreateItemDto) {
     return this.itemsService.create(createItemDto);
   }
 
