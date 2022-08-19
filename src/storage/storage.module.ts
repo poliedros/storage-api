@@ -10,5 +10,6 @@ import { Storage, StorageSchema } from './entities/storage.entity';
   ],
   controllers: [StorageController],
   providers: [StorageService],
+  exports: [StorageService],
 })
 export class StorageModule {}

@@ -45,4 +45,8 @@ export class StorageService {
       })
       .exec();
   }
+
+  async findStorageIdByUserId(userId: string) {
+    return this.storageModel.findOne({ userId: userId });
+  }
 }

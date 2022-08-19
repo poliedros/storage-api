@@ -1,3 +1,4 @@
+import { StorageService } from './../storage/storage.service';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -9,10 +10,17 @@ import { Item, ItemDocument } from './entities/item.entity';
 export class ItemsService {
   constructor(
     @InjectModel(Item.name) private itemsModel: Model<ItemDocument>,
+    private readonly storagesService: StorageService,
   ) {}
 
-  create(createItemDto: CreateItemDto) {
+  async create(createItemDto: CreateItemDto) {
+    const { _id: storageId } = await this.storagesService.findStorageIdByUserId(
+      createItemDto.userId,
+    );
+
     const item = new this.itemsModel(createItemDto);
+    item.storageId = storageId;
+
     return item.save();
   }
 
