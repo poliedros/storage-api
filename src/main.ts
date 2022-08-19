@@ -9,9 +9,9 @@ async function bootstrap() {
     {
       transport: REDIS,
       options: {
-        url: process.env.REDIS_HOST,
+        host: process.env.REDIS_HOST,
         port: process.env.REDIS_PORT,
-        auth_pass: `${process.env.REDIS_AUTH_PASS}`,
+        password: `${process.env.REDIS_AUTH_PASS}`,
       },
     },
   );
