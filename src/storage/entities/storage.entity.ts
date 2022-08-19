@@ -51,6 +51,10 @@ export class Storage {
 
   @Prop()
   paymentMethods: string;
+
+  // TODO: index prop??
+  @Prop()
+  userId: string;
 }
 
 export const StorageSchema = SchemaFactory.createForClass(Storage);

@@ -7,5 +7,5 @@ export class CreateItemDto {
   price: number;
   quantity: number;
   image: string;
-  clientId: string;
+  userId: string;
 }

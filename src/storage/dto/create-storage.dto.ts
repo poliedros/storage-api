@@ -13,4 +13,5 @@ export class CreateStorageDto {
   theme: string;
   deliveryPrice: string;
   paymentMethods: string;
+  userId: string;
 }

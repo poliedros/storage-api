@@ -32,7 +32,11 @@ export class Item {
   image: string;
 
   @Prop()
-  clientId: string;
+  userId: string;
+
+  // Indexed property for fast lookup
+  @Prop()
+  storageId: string;
 }
 
 export const ItemSchema = SchemaFactory.createForClass(Item);
