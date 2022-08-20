@@ -53,4 +53,9 @@ export class ItemsService {
       })
       .exec();
   }
+
+  async findAllByStorageId(storageId: string) {
+    // That's why storageId must be a indexed value
+    return this.itemsModel.find({ storageId: storageId });
+  }
 }

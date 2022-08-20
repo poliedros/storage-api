@@ -14,8 +14,10 @@ export class ItemsController {
   }
 
   @MessagePattern({ items: 'findall' })
-  findAll() {
-    return this.itemsService.findAll();
+  findAll(@Payload() storageId: string) {
+    if (!storageId) return this.itemsService.findAll();
+
+    return this.itemsService.findAllByStorageId(storageId);
   }
 
   @MessagePattern({ items: 'find' })
