@@ -14,8 +14,9 @@ export class ItemsService {
   ) {}
 
   async create(createItemDto: CreateItemDto) {
-    const { _id: storageId } = await this.storagesService.findStorageIdByUserId(
-      createItemDto.userId,
+    const { userId } = createItemDto;
+    const { _id: storageId } = await this.storagesService.findStorageByUserId(
+      userId,
     );
 
     const item = new this.itemsModel(createItemDto);
